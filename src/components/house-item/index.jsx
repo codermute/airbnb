@@ -23,6 +23,7 @@ const HouseItem = memo((props) => {
         <div className="bottom">
           <Rate
             allowHalf
+            disabled
             defaultValue={houseData.star_rating ?? 1}
             style={{ fontSize: 12, marginTop: 2 }}
           />

@@ -13,6 +13,7 @@ export const HouseWrapper = styled.div`
       position: relative;
       box-sizing: border-box;
       padding: 66.66% 0 0;
+      margin-bottom: 2px;
       border-radius: 4px;
       overflow: hidden;
 
@@ -49,7 +50,7 @@ export const HouseWrapper = styled.div`
     .bottom_info {
       display: inline-block;
       margin-left: 6px;
-      /* font-size: 12px; */
+      font-size: 12px;
       color: ${props => props.contentColor}
     }
   }
