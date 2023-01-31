@@ -5,10 +5,4 @@ export const HomeWrapper = styled.div`
     width: 1034px;
     margin: 0 auto;
   }
-
-  .house {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -8px;
-  }
 `

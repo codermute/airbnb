@@ -1,35 +1,38 @@
-import HouseItem from "@/components/house-item";
-import SectionTitle from "@/components/section-title";
-import { fetchHomeGoodPriceInfo } from "@/store/modules/home";
+import { fetchHomeInfoAction } from "@/store/modules/home";
 import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import Banner from "./c-cpns/banner";
+import HeaderBanner from "./c-cpns/header-banner";
+import HomeSectionV1 from "./c-cpns/home-section-v1";
 import { HomeWrapper } from "./style";
 
 const Home = memo(() => {
-  const { goodPriceInfo } = useSelector(
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchHomeInfoAction());
+  }, [dispatch]);
+
+  const { goodPriceInfo, highScoreInfo } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.homeGoodPriceInfo,
+      highScoreInfo: state.home.homeHighScoreInfo,
+      hotRecommendInfo: state.home.homeHotRecommendInfo,
     }),
     shallowEqual
   );
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchHomeGoodPriceInfo());
-  }, [dispatch]);
-
   return (
     <HomeWrapper>
-      <Banner />
+      <HeaderBanner />
       <div className="content">
-        <SectionTitle title={goodPriceInfo.title} />
-        <div className="house">
-          {goodPriceInfo?.list?.slice(0, 8).map((item) => (
-            <HouseItem houseData={item} key={item.id} />
-          ))}
-        </div>
+        <HomeSectionV1 houseData={goodPriceInfo} />
+        <HomeSectionV1 houseData={highScoreInfo} />
+
+        {/* <SectionTitle
+          title={hotRecommendInfo.title}
+          subtitle={hotRecommendInfo.subtitle}
+        />
+        <SectionHouse houseInfo={hotRecommendInfo?.list} /> */}
       </div>
     </HomeWrapper>
   );
