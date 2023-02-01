@@ -4,12 +4,12 @@ import { HouseWrapper } from "./style";
 import HouseItem from "@/components/house-item";
 
 const SectionHouse = memo((props) => {
-  const { houseInfo } = props;
+  const { houseInfo, itemWidth = "25%" } = props;
 
   return (
     <HouseWrapper>
       {houseInfo?.slice(0, 8).map((item) => (
-        <HouseItem houseData={item} key={item.id} />
+        <HouseItem houseData={item} itemWidth={itemWidth} key={item.id} />
       ))}
     </HouseWrapper>
   );

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HouseWrapper = styled.div`
-  width: 25%;
+  width: ${props => props.itemWidth};
   box-sizing: border-box;
 
   .inner {

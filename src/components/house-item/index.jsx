@@ -4,12 +4,13 @@ import { Rate } from "antd";
 import { HouseWrapper } from "./style";
 
 const HouseItem = memo((props) => {
-  const { houseData } = props;
+  const { houseData, itemWidth } = props;
 
   return (
     <HouseWrapper
       introduceColor={houseData?.verify_info.text_color}
       contentColor={houseData?.bottom_info?.content_color}
+      itemWidth={itemWidth}
     >
       <div className="inner">
         <div className="good">

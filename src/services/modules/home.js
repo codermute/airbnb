@@ -12,6 +12,12 @@ export function getHomeHighScoreData() {
   })
 }
 
+export function getHomeDiscountData() {
+  return Request.get({
+    url: "/home/discount"
+  })
+}
+
 export function getHomeHotRecommendData() {
   return Request.get({
     url: "/home/hotrecommenddest"
