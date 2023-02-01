@@ -8,6 +8,7 @@ export const HouseWrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding: 8px;
+    cursor: pointer;
 
     .good {
       position: relative;

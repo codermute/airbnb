@@ -27,12 +27,6 @@ const Home = memo(() => {
       <div className="content">
         <HomeSectionV1 houseData={goodPriceInfo} />
         <HomeSectionV1 houseData={highScoreInfo} />
-
-        {/* <SectionTitle
-          title={hotRecommendInfo.title}
-          subtitle={hotRecommendInfo.subtitle}
-        />
-        <SectionHouse houseInfo={hotRecommendInfo?.list} /> */}
       </div>
     </HomeWrapper>
   );
