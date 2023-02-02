@@ -4,9 +4,6 @@ export const TabsWrapper = styled.div`
   margin: 10px 0;
 
   .tabs {
-    display: flex;
-    align-items: center;
-
     .item {
       box-sizing: border-box;
       flex-basis: 120px;

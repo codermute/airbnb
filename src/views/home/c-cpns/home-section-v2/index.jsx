@@ -1,3 +1,4 @@
+import SectionFooter from "@/components/section-footer";
 import SectionHouse from "@/components/section-house";
 import SectionTabs from "@/components/section-tabs";
 import SectionTitle from "@/components/section-title";
@@ -25,6 +26,7 @@ const HomeSectionV2 = memo((props) => {
         houseInfo={houseData?.dest_list?.[name]}
         itemWidth="33.33333%"
       />
+      <SectionFooter name={name} />
     </SectionV2Wrapper>
   );
 });
