@@ -5,6 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import HeaderBanner from "./c-cpns/header-banner";
 import HomeSectionV1 from "./c-cpns/home-section-v1";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
+import HomeSectionV3 from "./c-cpns/home-section-v3";
 import { HomeWrapper } from "./style";
 
 const Home = memo(() => {
@@ -14,16 +15,22 @@ const Home = memo(() => {
     dispatch(fetchHomeInfoAction());
   }, [dispatch]);
 
-  const { goodPriceInfo, highScoreInfo, discountInfo, hotRecommendInfo } =
-    useSelector(
-      (state) => ({
-        goodPriceInfo: state.home.homeGoodPriceInfo,
-        highScoreInfo: state.home.homeHighScoreInfo,
-        discountInfo: state.home.homeDiscountInfo,
-        hotRecommendInfo: state.home.homeHotRecommendInfo,
-      }),
-      shallowEqual
-    );
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    hotRecommendInfo,
+    homeLongforInfo,
+  } = useSelector(
+    (state) => ({
+      goodPriceInfo: state.home.homeGoodPriceInfo,
+      highScoreInfo: state.home.homeHighScoreInfo,
+      discountInfo: state.home.homeDiscountInfo,
+      hotRecommendInfo: state.home.homeHotRecommendInfo,
+      homeLongforInfo: state.home.homeLongforInfo,
+    }),
+    shallowEqual
+  );
 
   return (
     <HomeWrapper>
@@ -34,6 +41,10 @@ const Home = memo(() => {
         )}
         {isEmptyObject(hotRecommendInfo) && (
           <HomeSectionV2 houseData={hotRecommendInfo} />
+        )}
+
+        {isEmptyObject(homeLongforInfo) && (
+          <HomeSectionV3 houseData={homeLongforInfo} />
         )}
 
         {isEmptyObject(goodPriceInfo) && (

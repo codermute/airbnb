@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ViewWrapper = styled.div`
   position: relative;
+  width: 100%;
 
   .control {
     position: absolute;
@@ -34,8 +35,12 @@ export const ViewWrapper = styled.div`
     transform: translate(50%, -50%);
   }
 
-  .content {
-    display: flex;
+  .scroll {
     overflow: hidden;
+
+    .scroll-content {
+      display: flex;
+      transition: transform 250ms ease;
+    }
   }
 `
