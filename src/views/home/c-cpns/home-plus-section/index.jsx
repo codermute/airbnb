@@ -1,29 +1,29 @@
 import ScrollView from "@/base-ui/scroll-view";
-import LongforItem from "@/components/longfor-item";
+import HouseItem from "@/components/house-item";
 import SectionTitle from "@/components/section-title";
 import PropTypes from "prop-types";
 import React, { memo } from "react";
-import { SectionV3Wrapper } from "./style";
+import { PlusWrapper } from "./style";
 
-const HomeSectionV3 = memo((props) => {
+const HomePlusSection = memo((props) => {
   const { houseData } = props;
 
   return (
-    <SectionV3Wrapper>
+    <PlusWrapper>
       <SectionTitle title={houseData.title} subtitle={houseData.subtitle} />
       <div className="house-list">
         <ScrollView>
           {houseData.list.map((item) => {
-            return <LongforItem houseInfo={item} key={item.city} />;
+            return <HouseItem houseData={item} key={item.id} itemWidth="20%" />;
           })}
         </ScrollView>
       </div>
-    </SectionV3Wrapper>
+    </PlusWrapper>
   );
 });
 
-HomeSectionV3.propTypes = {
+HomePlusSection.propTypes = {
   houseData: PropTypes.object,
 };
 
-export default HomeSectionV3;
+export default HomePlusSection;

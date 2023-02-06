@@ -3,6 +3,7 @@ import { isEmptyObject } from "@/utils";
 import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import HeaderBanner from "./c-cpns/header-banner";
+import HomePlusSection from "./c-cpns/home-plus-section";
 import HomeSectionV1 from "./c-cpns/home-section-v1";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
 import HomeSectionV3 from "./c-cpns/home-section-v3";
@@ -21,6 +22,7 @@ const Home = memo(() => {
     discountInfo,
     hotRecommendInfo,
     homeLongforInfo,
+    homePlusInfo,
   } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.homeGoodPriceInfo,
@@ -28,6 +30,7 @@ const Home = memo(() => {
       discountInfo: state.home.homeDiscountInfo,
       hotRecommendInfo: state.home.homeHotRecommendInfo,
       homeLongforInfo: state.home.homeLongforInfo,
+      homePlusInfo: state.home.homePlusInfo,
     }),
     shallowEqual
   );
@@ -52,6 +55,10 @@ const Home = memo(() => {
         )}
         {isEmptyObject(highScoreInfo) && (
           <HomeSectionV1 houseData={highScoreInfo} />
+        )}
+
+        {isEmptyObject(homePlusInfo) && (
+          <HomePlusSection houseData={homePlusInfo} />
         )}
       </div>
     </HomeWrapper>

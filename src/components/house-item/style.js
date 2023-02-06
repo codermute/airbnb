@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const HouseWrapper = styled.div`
   width: ${props => props.itemWidth};
+  flex-shrink: 0;
   box-sizing: border-box;
 
   .inner {
@@ -45,13 +46,24 @@ export const HouseWrapper = styled.div`
 
     .bottom {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
+      white-space: nowrap;
+
+      .ant-rate-star  {
+        margin-inline-end: 3px;
+      }
+
+      .ant-rate-star-second {
+        font-size: 11px;
+      }
     }
 
     .bottom_info {
       display: inline-block;
       margin-left: 6px;
+      white-space: nowrap;
       font-size: 12px;
+      line-height: 1.15;
       color: ${props => props.contentColor}
     }
   }

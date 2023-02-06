@@ -28,9 +28,12 @@ const HouseItem = memo((props) => {
             defaultValue={houseData.star_rating ?? 1}
             style={{ fontSize: 12, marginTop: 2 }}
           />
-          <span className="bottom_info">
-            {houseData.reviews_count}.{houseData?.bottom_info?.content}
-          </span>
+          <div className="bottom_info">
+            <span>{houseData.reviews_count}</span>
+            {houseData?.bottom_info?.content && (
+              <span>.{houseData?.bottom_info?.content}</span>
+            )}
+          </div>
         </div>
       </div>
     </HouseWrapper>
