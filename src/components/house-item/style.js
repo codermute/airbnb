@@ -11,7 +11,7 @@ export const HouseWrapper = styled.div`
     padding: 8px;
     cursor: pointer;
 
-    .good {
+    .cover {
       position: relative;
       box-sizing: border-box;
       padding: 66.66% 0 0;

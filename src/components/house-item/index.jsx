@@ -13,7 +13,7 @@ const HouseItem = memo((props) => {
       itemWidth={itemWidth}
     >
       <div className="inner">
-        <div className="good">
+        <div className="cover">
           <img src={houseData.picture_url} alt={houseData.name} />
         </div>
         <span className="introduce">
