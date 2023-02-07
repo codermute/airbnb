@@ -4,9 +4,10 @@ import { shallowEqual, useSelector } from "react-redux";
 import { HouseWrapper } from "./style";
 
 const EntireHouse = memo(() => {
-  const { houseList } = useSelector(
+  const { houseList, isLoading } = useSelector(
     (state) => ({
       houseList: state.entire.houseList,
+      isLoading: state.entire.isLoading,
     }),
     shallowEqual
   );
@@ -18,6 +19,8 @@ const EntireHouse = memo(() => {
           <HouseItem houseData={item} key={item._id} itemWidth="20%" />
         ))}
       </div>
+
+      {isLoading && <div className="cover"></div>}
     </HouseWrapper>
   );
 });

@@ -1,5 +1,5 @@
 import { getEntireRoomList } from "@/services"
-import { CHANGE_HOUSE_LIST, CHANGE_TOTAL_COUNT } from "./constants"
+import { CHANGE_CURRENT_PAGE, CHANGE_HOUSE_LIST, CHANGE_IS_LOADING, CHANGE_TOTAL_COUNT } from "./constants"
 
 export const changeHouseListAction = (houseList) => ({
   type: CHANGE_HOUSE_LIST,
@@ -11,10 +11,22 @@ export const changeTotalCountAction = (totalCount) => ({
   totalCount
 })
 
+export const changeCurrentPageAction = (currentPage) => ({
+  type: CHANGE_CURRENT_PAGE,
+  currentPage
+})
 
-export const fetchHouseListAction = () => {
+export const changeIsLoadingAction = (isLoading) => ({
+  type: CHANGE_IS_LOADING,
+  isLoading
+})
+
+
+export const fetchHouseListAction = (page = 0) => {
   return async (dispatch) => {
-    const res = await getEntireRoomList()
+    dispatch(changeIsLoadingAction(true))
+    const res = await getEntireRoomList(page * 20)
+    dispatch(changeIsLoadingAction(false))
 
     const houseList = res.list
     const totalCount = res.totalCount
