@@ -5,8 +5,9 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { fetchHouseListAction } from "@/store/modules/entire/actionCreators";
 
 const EntirePagination = memo(() => {
-  const { totalCount } = useSelector(
+  const { totalCount, houseList } = useSelector(
     (state) => ({
+      houseList: state.entire.houseList,
       totalCount: state.entire.totalCount,
     }),
     shallowEqual
@@ -23,7 +24,9 @@ const EntirePagination = memo(() => {
   return (
     <PaginationWrapper>
       <div className="info">
-        <Pagination count={totalPage} onChange={changePageHandle} />
+        {!!houseList.length && (
+          <Pagination count={totalPage} onChange={changePageHandle} />
+        )}
       </div>
     </PaginationWrapper>
   );

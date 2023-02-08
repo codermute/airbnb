@@ -4,6 +4,7 @@ import { Rate, Carousel } from "antd";
 import { HouseWrapper } from "./style";
 import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
+import Indicator from "@/base-ui/indicator";
 
 const HouseItem = memo((props) => {
   const { houseData, itemWidth } = props;
@@ -31,8 +32,20 @@ const HouseItem = memo((props) => {
         </div>
       </div>
 
+      <div className="indicator">
+        <Indicator>
+          {houseData?.picture_urls?.map((item, index) => {
+            return (
+              <div className="item" key={item}>
+                <span className="dot"></span>
+              </div>
+            );
+          })}
+        </Indicator>
+      </div>
+
       <Carousel dots={false} ref={carouselRef}>
-        {houseData.picture_urls.map((item, index) => {
+        {houseData?.picture_urls?.map((item, index) => {
           return (
             <div className="cover" key={index}>
               <img src={item} alt={item} />

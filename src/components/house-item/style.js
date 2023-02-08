@@ -44,6 +44,31 @@ export const HouseWrapper = styled.div`
           }
         }
       }
+
+      .indicator {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        z-index: 9;
+        display: flex;
+        justify-content: center;
+
+        .item {
+          /* display: flex;
+          width: 30%;
+          overflow: hidden; */
+
+          .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin: 0 2px;
+            border-radius: 50%;
+            background-color: red;
+          }
+        }
+      }
     }
     
     .cover {
