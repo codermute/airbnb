@@ -1,10 +1,47 @@
 import PropTypes from "prop-types";
-import React, { memo } from "react";
-import { Rate } from "antd";
+import React, { memo, useRef } from "react";
+import { Rate, Carousel } from "antd";
 import { HouseWrapper } from "./style";
+import IconArrowLeft from "@/assets/svg/icon-arrow-left";
+import IconArrowRight from "@/assets/svg/icon-arrow-right";
 
 const HouseItem = memo((props) => {
   const { houseData, itemWidth } = props;
+
+  const carouselRef = useRef();
+
+  function controlClickHandle(isNext = true) {
+    isNext ? carouselRef.current.next() : carouselRef.current.prev();
+  }
+
+  const pictureElement = (
+    <div className="cover">
+      <img src={houseData.picture_url} alt={houseData.name} />
+    </div>
+  );
+
+  const carouselElement = (
+    <div className="carousel">
+      <div className="control">
+        <div className="btn left" onClick={() => controlClickHandle(false)}>
+          <IconArrowLeft width="30" height="30" />
+        </div>
+        <div className="btn right" onClick={() => controlClickHandle()}>
+          <IconArrowRight width="30" height="30" />
+        </div>
+      </div>
+
+      <Carousel dots={false} ref={carouselRef}>
+        {houseData.picture_urls.map((item, index) => {
+          return (
+            <div className="cover" key={index}>
+              <img src={item} alt={item} />
+            </div>
+          );
+        })}
+      </Carousel>
+    </div>
+  );
 
   return (
     <HouseWrapper
@@ -13,9 +50,7 @@ const HouseItem = memo((props) => {
       itemWidth={itemWidth}
     >
       <div className="inner">
-        <div className="cover">
-          <img src={houseData.picture_url} alt={houseData.name} />
-        </div>
+        {houseData.picture_urls ? carouselElement : pictureElement}
         <span className="introduce">
           {houseData.verify_info.messages?.join(".")}
         </span>

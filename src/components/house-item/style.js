@@ -11,6 +11,41 @@ export const HouseWrapper = styled.div`
     padding: 8px;
     cursor: pointer;
 
+    .carousel {
+      position: relative;
+
+      &:hover {
+        .control {
+          display: flex;
+        }
+      }
+
+      .control {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        display: none;
+        justify-content: space-between;
+        color: #fff;
+
+        .btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 70px;
+          height: 100%;
+          background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+
+          &.right {
+            background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+          }
+        }
+      }
+    }
+    
     .cover {
       position: relative;
       box-sizing: border-box;
