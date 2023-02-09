@@ -11,7 +11,7 @@ const HouseItem = memo((props) => {
 
   const carouselRef = useRef();
 
-  function controlClickHandle(isNext = true) {
+  function controlClickHandle(isNext = true, event) {
     isNext ? carouselRef.current.next() : carouselRef.current.prev();
   }
 
@@ -24,10 +24,10 @@ const HouseItem = memo((props) => {
   const carouselElement = (
     <div className="carousel">
       <div className="control">
-        <div className="btn left" onClick={() => controlClickHandle(false)}>
+        <div className="btn left" onClick={(e) => controlClickHandle(false, e)}>
           <IconArrowLeft width="30" height="30" />
         </div>
-        <div className="btn right" onClick={() => controlClickHandle()}>
+        <div className="btn right" onClick={(e) => controlClickHandle(true, e)}>
           <IconArrowRight width="30" height="30" />
         </div>
       </div>

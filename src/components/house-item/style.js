@@ -51,21 +51,21 @@ export const HouseWrapper = styled.div`
         left: 0;
         right: 0;
         z-index: 9;
-        display: flex;
-        justify-content: center;
+        width: 30%;
+        margin: 0 auto;
 
         .item {
-          /* display: flex;
-          width: 30%;
-          overflow: hidden; */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 14.29%;
 
           .dot {
             display: inline-block;
-            width: 8px;
-            height: 8px;
-            margin: 0 2px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
-            background-color: red;
+            background-color: #fff;
           }
         }
       }
