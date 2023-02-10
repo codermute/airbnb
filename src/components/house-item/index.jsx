@@ -1,18 +1,26 @@
 import PropTypes from "prop-types";
-import React, { memo, useRef } from "react";
+import React, { memo, useRef, useState } from "react";
 import { Rate, Carousel } from "antd";
 import { HouseWrapper } from "./style";
 import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
 import Indicator from "@/base-ui/indicator";
+import classNames from "classnames";
 
 const HouseItem = memo((props) => {
   const { houseData, itemWidth } = props;
 
+  const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef();
 
-  function controlClickHandle(isNext = true, event) {
+  function controlClickHandle(isNext = true) {
     isNext ? carouselRef.current.next() : carouselRef.current.prev();
+
+    const length = houseData?.picture_urls?.length;
+    let selectIndex = isNext ? currentIndex + 1 : currentIndex - 1;
+    if (currentIndex > length - 1) selectIndex = 0;
+    if (currentIndex < 0) selectIndex = length - 1;
+    setCurrentIndex(selectIndex);
   }
 
   const pictureElement = (
@@ -24,20 +32,24 @@ const HouseItem = memo((props) => {
   const carouselElement = (
     <div className="carousel">
       <div className="control">
-        <div className="btn left" onClick={(e) => controlClickHandle(false, e)}>
+        <div className="btn left" onClick={(e) => controlClickHandle(false)}>
           <IconArrowLeft width="30" height="30" />
         </div>
-        <div className="btn right" onClick={(e) => controlClickHandle(true, e)}>
+        <div className="btn right" onClick={(e) => controlClickHandle(true)}>
           <IconArrowRight width="30" height="30" />
         </div>
       </div>
 
       <div className="indicator">
-        <Indicator>
+        <Indicator selectIndex={currentIndex}>
           {houseData?.picture_urls?.map((item, index) => {
             return (
               <div className="item" key={item}>
-                <span className="dot"></span>
+                <span
+                  className={classNames("dot", {
+                    active: currentIndex === index,
+                  })}
+                ></span>
               </div>
             );
           })}

@@ -62,10 +62,15 @@ export const HouseWrapper = styled.div`
 
           .dot {
             display: inline-block;
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background-color: #fff;
+
+            &.active {
+              width: 8px;
+              height: 8px;
+            }
           }
         }
       }
