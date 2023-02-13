@@ -6,6 +6,7 @@ export const IndicatorWrapper = styled.div`
   .list {
     display: flex;
     flex-wrap: nowrap !important;
+    transition: transform 200ms ease;
 
     > * {
       flex-shrink: 0;

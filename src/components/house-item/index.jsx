@@ -16,10 +16,10 @@ const HouseItem = memo((props) => {
   function controlClickHandle(isNext = true) {
     isNext ? carouselRef.current.next() : carouselRef.current.prev();
 
-    const length = houseData?.picture_urls?.length;
+    const length = houseData.picture_urls.length;
     let selectIndex = isNext ? currentIndex + 1 : currentIndex - 1;
-    if (currentIndex > length - 1) selectIndex = 0;
-    if (currentIndex < 0) selectIndex = length - 1;
+    if (selectIndex > length - 1) selectIndex = 0;
+    if (selectIndex < 0) selectIndex = length - 1;
     setCurrentIndex(selectIndex);
   }
 
