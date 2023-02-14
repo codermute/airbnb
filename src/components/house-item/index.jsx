@@ -8,12 +8,12 @@ import Indicator from "@/base-ui/indicator";
 import classNames from "classnames";
 
 const HouseItem = memo((props) => {
-  const { houseData, itemWidth } = props;
+  const { houseData, itemWidth, itemClick } = props;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef();
 
-  function controlClickHandle(isNext = true) {
+  function controlClickHandle(isNext = true, event) {
     isNext ? carouselRef.current.next() : carouselRef.current.prev();
 
     const length = houseData.picture_urls.length;
@@ -21,6 +21,12 @@ const HouseItem = memo((props) => {
     if (selectIndex > length - 1) selectIndex = 0;
     if (selectIndex < 0) selectIndex = length - 1;
     setCurrentIndex(selectIndex);
+
+    event.stopPropagation();
+  }
+
+  function itemClickHandle() {
+    if (itemClick) itemClick(houseData);
   }
 
   const pictureElement = (
@@ -32,10 +38,10 @@ const HouseItem = memo((props) => {
   const carouselElement = (
     <div className="carousel">
       <div className="control">
-        <div className="btn left" onClick={(e) => controlClickHandle(false)}>
+        <div className="btn left" onClick={(e) => controlClickHandle(false, e)}>
           <IconArrowLeft width="30" height="30" />
         </div>
-        <div className="btn right" onClick={(e) => controlClickHandle(true)}>
+        <div className="btn right" onClick={(e) => controlClickHandle(true, e)}>
           <IconArrowRight width="30" height="30" />
         </div>
       </div>
@@ -73,6 +79,7 @@ const HouseItem = memo((props) => {
       introduceColor={houseData?.verify_info.text_color}
       contentColor={houseData?.bottom_info?.content_color}
       itemWidth={itemWidth}
+      onClick={itemClickHandle}
     >
       <div className="inner">
         {houseData.picture_urls ? carouselElement : pictureElement}

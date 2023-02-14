@@ -12,11 +12,20 @@ const EntireHouse = memo(() => {
     shallowEqual
   );
 
+  function itemClick(item) {
+    console.log(item);
+  }
+
   return (
     <HouseWrapper>
       <div className="list">
         {houseList.map((item) => (
-          <HouseItem houseData={item} key={item._id} itemWidth="20%" />
+          <HouseItem
+            houseData={item}
+            key={item._id}
+            itemWidth="20%"
+            itemClick={itemClick}
+          />
         ))}
       </div>
 
