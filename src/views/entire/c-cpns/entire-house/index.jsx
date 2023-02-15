@@ -1,6 +1,8 @@
 import HouseItem from "@/components/house-item";
-import React, { memo } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { changeDetailInfoAction } from "@/store/modules/detail";
+import React, { memo, useCallback } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { HouseWrapper } from "./style";
 
 const EntireHouse = memo(() => {
@@ -12,9 +14,15 @@ const EntireHouse = memo(() => {
     shallowEqual
   );
 
-  function itemClick(item) {
-    console.log(item);
-  }
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const itemClick = useCallback(
+    (item) => {
+      dispatch(changeDetailInfoAction(item));
+      navigate("/detail");
+    },
+    [dispatch, navigate]
+  );
 
   return (
     <HouseWrapper>
